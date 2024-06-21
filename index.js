@@ -5,12 +5,14 @@ for (var i = 0; i < document.querySelectorAll(".drum").length; i++) {
     function handClick() {
         
         var buttonInnerHtml = this.innerHTML;
-        makeSound(buttonInnerHtml)
+        makeSound(buttonInnerHtml);
+        buttomAnimation(buttonInnerHtml);
     }
 }
 
 document.addEventListener("keydown", function (event) {
-    makeSound(event.key)
+    makeSound(event.key);
+    buttomAnimation(event.key);
 });
 
 function makeSound(key) {
@@ -55,4 +57,12 @@ function makeSound(key) {
             break;
     }
     
+}
+
+function buttomAnimation(correntkey) {
+        var activeButton = document.querySelector("." + correntkey);
+        activeButton.classList.add("pressed");
+        setTimeout(function () {
+            activeButton.classList.remove("pressed");
+        }, 200);
 }
